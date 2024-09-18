@@ -1,0 +1,18 @@
+<% if @shortened_url.errors.any? %>
+  <ul>
+    <% @shortened_url.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @shortened_url, local: true do |form| %>
+  <div class="field">
+    <%= form.label :origin %>
+    <%= form.text_field :origin %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Shorten URL" %>
+  </div>
+<% end %>
