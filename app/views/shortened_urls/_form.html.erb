@@ -1,9 +1,9 @@
 <% if @shortened_url.errors.any? %>
-  <ul>
     <% @shortened_url.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+      <div>
+        <%= msg %>
+      </div>
     <% end %>
-  </ul>
 <% end %>
 
 <%= form_with model: @shortened_url, local: true do |form| %>

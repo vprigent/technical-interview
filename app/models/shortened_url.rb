@@ -25,8 +25,15 @@ class ShortenedUrl < ApplicationRecord
     self.short = random
   end
 
+  # note; not happy about that
   def origin_is_url_format?
-    URI.parse(origin)&.host.present?
+    if URI.parse(origin).host.present?
+      true
+    else
+      self.errors.add(:origin, "URL is not the right format")
+      false
+    end
+
   rescue URI::InvalidURIError
     self.errors.add(:origin, "URL is not the right format")
     false

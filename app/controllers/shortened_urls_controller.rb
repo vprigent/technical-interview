@@ -14,6 +14,8 @@ class ShortenedUrlsController < ApplicationController
       flash.notice = "Your shortened URL is #{helpers.generate_from_short(@shortened_url)}".html_safe
       redirect_to action: :new
     else
+      # @shortened_url.
+
       render :new
     end
   end
